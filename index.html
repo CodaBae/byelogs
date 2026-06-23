@@ -3,254 +3,415 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>byelogs CDN</title>
+  <title>byelogs · CDN</title>
   <link rel="icon" href="https://res.cloudinary.com/df2ddqv7p/image/upload/v1782039158/Untitled_-_21_June_2026_at_11.50.25_1_mviiz1.png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0A0A0B;
-      color: #F5F5F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0B0B0D;
+      color: #F0F0F3;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.02) 0%, transparent 40%);
+    }
+
+    /* main card – glassy, dark, with yellow sparks */
+    .card {
+      background: #111117;
+      border: 1px solid #2C2C36;
+      border-radius: 2.5rem;
+      padding: 3rem 2.8rem;
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.08);
+      backdrop-filter: blur(2px);
+      transition: all 0.2s ease;
+    }
+
+    /* ----- BIGGER LOGO + MKA (we combine logo & text) ----- */
+    .logo-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-big {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.15));
+      transition: transform 0.3s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo-big:hover {
+      transform: scale(1.02) rotate(-1deg);
+    }
+
+    /* brand + MKA mark – bigger & yellow */
+    .brand-line {
+      display: flex;
+      align-items: center;
       justify-content: center;
-      padding: 24px;
-    }
-
-    .card {
-      background: #121215;
-      border: 1px solid #2A2A30;
-      border-radius: 16px;
-      padding: 48px;
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      margin-top: 0.2rem;
     }
 
     h1 {
-      font-size: 36px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #ebf305, #ebf305);
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #FFD966, #FFB800);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 8px;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .mka-badge {
+      background: #1E1E28;
+      border: 1px solid #FFD966;
+      color: #FFD966;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 60px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 215, 0, 0.03);
+      margin-left: 0.2rem;
     }
 
     .tagline {
-      color: #A1A1AA;
-      font-size: 16px;
-      margin-bottom: 32px;
+      color: #B0B0C0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      margin-top: 0.1rem;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px dashed #2C2C36;
+      padding-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    .tagline span {
+      color: #FFD966;
+      font-weight: 500;
+    }
+
+    /* yellow badge */
+    .badge-yellow {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      color: #FFD966;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
+      margin-bottom: 1.8rem;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.05);
     }
 
     .divider {
       height: 1px;
-      background: #2A2A30;
-      margin: 32px 0;
+      background: linear-gradient(90deg, transparent, #FFD966, #2C2C36, #FFD966, transparent);
+      margin: 1.8rem 0;
+      opacity: 0.4;
     }
 
     .section-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #6B6B75;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #A0A0B0;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: #1A1A22;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #2A2A34;
     }
 
+    /* code blocks – creative yellow highlights */
     .code-block {
-      background: #1A1A1F;
-      border: 1px solid #2A2A30;
-      border-radius: 8px;
-      padding: 16px 20px;
+      background: #14141C;
+      border: 1px solid #2C2C38;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
       text-align: left;
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
-      font-size: 13px;
-      color: #F5F5F7;
+      font-size: 0.9rem;
+      color: #E8E8F0;
       overflow-x: auto;
-      margin-bottom: 12px;
+      margin-bottom: 0.9rem;
       position: relative;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+      transition: border 0.2s;
+    }
+
+    .code-block:hover {
+      border-color: #FFD966;
     }
 
     .code-block .string {
-      color: #23b85a;
+      color: #FFD966;
     }
 
     .code-block .keyword {
-      color: #ebf305;
+      color: #FFB800;
+      font-weight: 600;
+    }
+
+    .code-block .comment {
+      color: #6A6A7A;
+      font-style: italic;
     }
 
     .copy-btn {
       position: absolute;
-      top: 12px;
+      top: 10px;
       right: 12px;
-      background: #222228;
-      border: 1px solid #2A2A30;
-      color: #A1A1AA;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 12px;
+      background: #1F1F2A;
+      border: 1px solid #3A3A48;
+      color: #C0C0D0;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
     }
 
     .copy-btn:hover {
-      background: #2A2A30;
-      color: #F5F5F7;
+      background: #FFD966;
+      color: #0B0B0D;
+      border-color: #FFD966;
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
     }
 
     .copy-btn.copied {
-      background: #22C55E;
-      color: #0A0A0B;
-      border-color: #22C55E;
+      background: #FFD966;
+      color: #0B0B0D;
+      border-color: #FFD966;
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(99, 102, 241, 0.15);
-      color: #8B8CF6;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 24px;
-    }
-
+    /* feature grid – more creative */
     .features {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 0.8rem 1.2rem;
       text-align: left;
-      margin-bottom: 32px;
+      margin: 1.8rem 0 1.2rem;
     }
 
     .feature {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #A1A1AA;
-      font-size: 14px;
+      gap: 0.6rem;
+      color: #D0D0DD;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.2rem;
+      border-bottom: 1px dotted #252530;
     }
 
     .feature-icon {
-      color: #22C55E;
-      font-size: 16px;
+      color: #FFD966;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: rgba(255, 215, 0, 0.06);
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
     }
 
     .footer {
-      color: #6B6B75;
-      font-size: 12px;
-      margin-top: 24px;
+      color: #7A7A8A;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      letter-spacing: 0.2px;
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem 1.2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid #20202A;
+      padding-top: 1.5rem;
     }
 
     .footer a {
-      color: #ebf305;
+      color: #FFD966;
       text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted transparent;
+      transition: all 0.2s;
     }
 
     .footer a:hover {
-      text-decoration: underline;
+      border-bottom-color: #FFD966;
+      color: #FFE082;
     }
 
+    /* responsive */
     @media (max-width: 600px) {
-      .card { padding: 24px; }
+      .card { padding: 1.8rem 1.2rem; border-radius: 2rem; }
+      .logo-big { width: 100px; height: 100px; }
+      h1 { font-size: 2.8rem; }
+      .mka-badge { font-size: 0.9rem; padding: 0.1rem 0.7rem; }
       .features { grid-template-columns: 1fr; }
-      h1 { font-size: 28px; }
+      .code-block { font-size: 0.75rem; padding: 1rem; }
+    }
+
+    /* extra creative touch – glowing dots */
+    .glow-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #FFD966;
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 12px #FFD966;
+    }
+
+    .inline-yellow {
+      color: #FFD966;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
+<div class="card">
+
+  <!-- BIGGER LOGO + MKA (logo size increased) -->
+  <div class="logo-wrapper">
     <img 
       src="https://res.cloudinary.com/df2ddqv7p/image/upload/v1782039158/Untitled_-_21_June_2026_at_11.49.16_qxcgu9.png" 
       alt="byelogs" 
-      class="logo"
+      class="logo-big"
+      loading="lazy"
     >
-    
-    <h1>byelogs CDN</h1>
-    <p class="tagline">Bye logs. Hello clarity.</p>
-
-    <span class="badge">SDK v2.0.0</span>
-
-    <div class="divider"></div>
-
-    <p class="section-title">Installation</p>
-
-    <div class="code-block">
-      <span class="keyword">&lt;script</span> <span class="string">src=</span><span class="string">"https://byelogs-cdn.vercel.app/sdk.js?key=pk_YOUR_API_KEY"</span><span class="keyword">&gt;&lt;/script&gt;</span>
-      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    <div class="brand-line">
+      <h1>byelogs</h1>
+      <span class="mka-badge">⚡ MKA</span>
     </div>
-
-    <div class="features">
-      <div class="feature">
-        <span class="feature-icon">✓</span> Auto-captures errors
-      </div>
-      <div class="feature">
-        <span class="feature-icon">✓</span> User journey tracking
-      </div>
-      <div class="feature">
-        <span class="feature-icon">✓</span> Plain English translation
-      </div>
-      <div class="feature">
-        <span class="feature-icon">✓</span> Zero dependencies
-      </div>
-      <div class="feature">
-        <span class="feature-icon">✓</span> ~5KB gzipped
-      </div>
-      <div class="feature">
-        <span class="feature-icon">✓</span> Never breaks your app
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <p class="section-title">API Reference</p>
-
-    <div class="code-block" style="margin-bottom: 8px;">
-      <span class="comment">// Set manual intent</span><br>
-      byelogs.<span class="keyword">intent</span>(<span class="string">'upload_photo'</span>);
-    </div>
-
-    <div class="code-block" style="margin-bottom: 8px;">
-      <span class="comment">// Set user ID</span><br>
-      byelogs.<span class="keyword">setUser</span>(<span class="string">'user_abc123'</span>);
-    </div>
-
-    <div class="code-block">
-      <span class="comment">// Enable debug mode</span><br>
-      byelogs.<span class="keyword">debug</span>();
-    </div>
-
-    <p class="footer">
-      byelogs · <a href="https://byelogs.dev">byelogs.dev</a> · 
-      <a href="https://byelogs.onrender.com/health">API Status</a>
-    </p>
   </div>
 
-  <script>
-    function copyCode(btn) {
-      var block = btn.parentElement;
-      var text = block.textContent.replace('Copy', '').trim();
-      navigator.clipboard.writeText(text).then(function() {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(function() {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
-      });
-    }
-  </script>
+  <p class="tagline">
+    <span>⏎</span> Bye logs. <span>Hello clarity.</span> <span class="glow-dot"></span>
+  </p>
 
+  <span class="badge-yellow">✦ SDK v2.0.0 · zero-config ✦</span>
+
+  <div class="divider"></div>
+
+  <p class="section-title">⬡ installation</p>
+
+  <div class="code-block">
+    <span class="keyword">&lt;script</span> <span class="string">src=</span><span class="string">"https://byelogs-cdn.vercel.app/sdk.js?key=pk_YOUR_API_KEY"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+  </div>
+
+  <!-- features: creative, yellow accent -->
+  <div class="features">
+    <div class="feature"><span class="feature-icon">✓</span> Auto‑captures errors</div>
+    <div class="feature"><span class="feature-icon">✦</span> User journey tracking</div>
+    <div class="feature"><span class="feature-icon">⟡</span> Plain English translation</div>
+    <div class="feature"><span class="feature-icon">◈</span> Zero dependencies</div>
+    <div class="feature"><span class="feature-icon">⬡</span> ~5KB gzipped</div>
+    <div class="feature"><span class="feature-icon">⏎</span> Never breaks your app</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-title">⚡ API reference</p>
+
+  <div class="code-block">
+    <span class="comment">// set manual intent</span><br>
+    byelogs.<span class="keyword">intent</span>(<span class="string">'upload_photo'</span>);
+    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+  </div>
+
+  <div class="code-block">
+    <span class="comment">// set user ID</span><br>
+    byelogs.<span class="keyword">setUser</span>(<span class="string">'user_abc123'</span>);
+    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+  </div>
+
+  <div class="code-block" style="margin-bottom: 0.2rem;">
+    <span class="comment">// enable debug mode</span><br>
+    byelogs.<span class="keyword">debug</span>();
+    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+  </div>
+
+  <!-- footer with yellow links -->
+  <div class="footer">
+    <span>byelogs ·</span>
+    <a href="https://byelogs.dev">byelogs.dev</a>
+    <span>·</span>
+    <a href="https://byelogs.onrender.com/health">API Status</a>
+    <span>·</span>
+    <span style="color:#FFD966;">#MKA</span>
+  </div>
+</div>
+
+<script>
+  function copyCode(btn) {
+    const block = btn.parentElement;
+    // get text without the button content
+    let raw = block.textContent.replace('copy', '').replace('Copied!', '').trim();
+    // but we want exactly the code: remove button text that might remain
+    // better: clone and remove button
+    const clone = block.cloneNode(true);
+    const btnClone = clone.querySelector('.copy-btn');
+    if (btnClone) btnClone.remove();
+    const codeText = clone.textContent.trim();
+
+    navigator.clipboard.writeText(codeText).then(() => {
+      btn.textContent = '✓ copied';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // fallback
+      const textArea = document.createElement('textarea');
+      textArea.value = codeText;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      btn.textContent = '✓ copied';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
 </body>
 </html>
