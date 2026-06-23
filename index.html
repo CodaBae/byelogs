@@ -1,7 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>byelogs CDN</title>
+  <link rel="icon" href="https://res.cloudinary.com/df2ddqv7p/image/upload/v1782039158/Untitled_-_21_June_2026_at_11.50.25_1_mviiz1.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0A0A0B;
+      color: #F5F5F7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #121215;
+      border: 1px solid #2A2A30;
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      color: #A1A1AA;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #2A2A30;
+      margin: 32px 0;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #6B6B75;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .code-block {
+      background: #1A1A1F;
+      border: 1px solid #2A2A30;
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: left;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      color: #F5F5F7;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .code-block .string {
+      color: #22C55E;
+    }
+
+    .code-block .keyword {
+      color: #6366F1;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #222228;
+      border: 1px solid #2A2A30;
+      color: #A1A1AA;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #2A2A30;
+      color: #F5F5F7;
+    }
+
+    .copy-btn.copied {
+      background: #22C55E;
+      color: #0A0A0B;
+      border-color: #22C55E;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.15);
+      color: #8B8CF6;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #A1A1AA;
+      font-size: 14px;
+    }
+
+    .feature-icon {
+      color: #22C55E;
+      font-size: 16px;
+    }
+
+    .footer {
+      color: #6B6B75;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    .footer a {
+      color: #6366F1;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 24px; }
+      .features { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
 <body>
-  <h1>byelogs CDN</h1>
-  <p>SDK available at <code>/sdk.js</code></p>
+
+  <div class="card">
+    <img 
+      src="https://res.cloudinary.com/df2ddqv7p/image/upload/v1782039158/Untitled_-_21_June_2026_at_11.49.16_qxcgu9.png" 
+      alt="byelogs" 
+      class="logo"
+    >
+    
+    <h1>byelogs CDN</h1>
+    <p class="tagline">Bye logs. Hello clarity.</p>
+
+    <span class="badge">SDK v2.0.0</span>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Installation</p>
+
+    <div class="code-block">
+      <span class="keyword">&lt;script</span> <span class="string">src=</span><span class="string">"https://byelogs-cdn.vercel.app/sdk.js?key=pk_YOUR_API_KEY"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">✓</span> Auto-captures errors
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✓</span> User journey tracking
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✓</span> Plain English translation
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✓</span> Zero dependencies
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✓</span> ~5KB gzipped
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✓</span> Never breaks your app
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="section-title">API Reference</p>
+
+    <div class="code-block" style="margin-bottom: 8px;">
+      <span class="comment">// Set manual intent</span><br>
+      byelogs.<span class="keyword">intent</span>(<span class="string">'upload_photo'</span>);
+    </div>
+
+    <div class="code-block" style="margin-bottom: 8px;">
+      <span class="comment">// Set user ID</span><br>
+      byelogs.<span class="keyword">setUser</span>(<span class="string">'user_abc123'</span>);
+    </div>
+
+    <div class="code-block">
+      <span class="comment">// Enable debug mode</span><br>
+      byelogs.<span class="keyword">debug</span>();
+    </div>
+
+    <p class="footer">
+      byelogs · <a href="https://byelogs.dev">byelogs.dev</a> · 
+      <a href="https://byelogs.onrender.com/health">API Status</a>
+    </p>
+  </div>
+
+  <script>
+    function copyCode(btn) {
+      var block = btn.parentElement;
+      var text = block.textContent.replace('Copy', '').trim();
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+
 </body>
 </html>
