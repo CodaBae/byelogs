@@ -29,7 +29,7 @@
   
     var CONFIG = {
       apiKey: API_KEY,
-      endpoint: window.BYELOGS_ENDPOINT || 'https://api.fractnai.com/api/v1/events',
+      endpoint: window.BYELOGS_ENDPOINT || 'https://byelogs.onrender.com/api/v1/events',
       debug: window.BYELOGS_DEBUG || false,
       ignoreUrls: window.BYELOGS_IGNORE_URLS || [],
       ignoreStatusCodes: window.BYELOGS_IGNORE_STATUS_CODES || [],
